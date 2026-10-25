@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" fill="none" role="img" aria-label="Het Hondenkompas">
+  <!-- Compass -->
+  <circle cx="110" cy="95" r="54" stroke="#0a0a0a" stroke-width="2" fill="none"/>
+  <circle cx="110" cy="95" r="42" stroke="#b8956a" stroke-width="1.25" fill="none"/>
+  <!-- Needle -->
+  <polygon points="110,52 118,95 110,102 102,95" fill="#0a0a0a"/>
+  <polygon points="110,138 102,95 110,88 118,95" fill="#b8956a"/>
+  <!-- Cardinal ticks -->
+  <line x1="110" y1="38" x2="110" y2="46" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="110" y1="144" x2="110" y2="152" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="53" y1="95" x2="61" y2="95" stroke="#0a0a0a" stroke-width="2"/>
+  <line x1="159" y1="95" x2="167" y2="95" stroke="#0a0a0a" stroke-width="2"/>
+  <!-- Minimal origami dog silhouette under compass -->
+  <polygon points="78,168 95,148 125,148 142,168 125,168 110,156 95,168" fill="#0a0a0a"/>
+  <polygon points="95,148 110,132 125,148" fill="#b8956a"/>
+  <text x="110" y="198" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#0a0a0a" letter-spacing="1">Het Hondenkompas</text>
+</svg>
