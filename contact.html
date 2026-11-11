@@ -20,8 +20,7 @@
       <span></span>
     </button>
     <a href="index.html" class="logo">
-      Alfa Dogs
-      <span class="logo-sub">Boortmeerbeek</span>
+      <img src="images/brand/wordmark-light.png" alt="Alfa Dogs, Connection &amp; Training" class="logo-wordmark" width="563" height="410">
     </a>
     <a href="contact.html" class="header-cta">Contact</a>
   </header>
@@ -63,20 +62,25 @@
         <div>
           <p class="section-label">Schrijf ons</p>
           <h2 class="section-title">Neem contact op</h2>
-          <form class="contact-form" action="#" method="post">
+          <form class="contact-form" action="https://formsubmit.co/alfadogsbmb@gmail.com" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="_subject" value="Nieuw bericht via alfadogs.be">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
             <div class="form-group">
               <label for="name">Naam *</label>
-              <input type="text" id="name" name="name" required>
+              <input type="text" id="name" name="Naam" required autocomplete="name">
             </div>
             <div class="form-group">
               <label for="email">E-mailadres *</label>
-              <input type="email" id="email" name="email" required>
+              <input type="email" id="email" name="email" required autocomplete="email">
             </div>
             <div class="form-group">
               <label for="message">Bericht *</label>
-              <textarea id="message" name="message" required placeholder="Beschrijf kort je vraag of situatie…"></textarea>
+              <textarea id="message" name="Bericht" required placeholder="Beschrijf kort je vraag of situatie…"></textarea>
             </div>
+            <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button type="submit" class="btn btn-filled">Verzenden</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
 
@@ -110,7 +114,9 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo">Alfa Dogs</div>
+        <a href="index.html" class="logo">
+          <img src="images/brand/wordmark-light.png" alt="Alfa Dogs, Connection &amp; Training" class="logo-wordmark" width="563" height="410">
+        </a>
         <p>Connection &amp; Training, Hondenbegeleiding en opvoeding in Boortmeerbeek.</p>
       </div>
       <div class="footer-col">

@@ -21,6 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    const hero = document.querySelector('.hero, .page-hero');
+    const syncHeader = () => {
+      if (!hero) {
+        siteHeader.classList.add('is-solid');
+        return;
+      }
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      const headerBottom = siteHeader.getBoundingClientRect().bottom;
+      siteHeader.classList.toggle('is-solid', heroBottom < headerBottom - 4);
+    };
+    syncHeader();
+    window.addEventListener('scroll', syncHeader, { passive: true });
+    window.addEventListener('resize', syncHeader);
+  }
+
   const menuToggle = document.querySelector('.menu-toggle');
   const navOverlay = document.querySelector('.nav-overlay');
 
@@ -44,17 +61,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const contactForm = document.querySelector('.contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    const status = contactForm.querySelector('.form-status');
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    let sending = false;
+
+    const ajaxEndpoint = (action) => {
+      const url = new URL(action, window.location.href);
+      if (url.hostname === 'formsubmit.co' && !url.pathname.startsWith('/ajax/')) {
+        url.pathname = `/ajax${url.pathname}`;
+      }
+      return url.toString();
+    };
+
+    const setStatus = (message, state) => {
+      if (!status) return;
+      status.textContent = message;
+      status.classList.toggle('is-success', state === 'success');
+      status.classList.toggle('is-error', state === 'error');
+    };
+
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
-      btn.textContent = 'Bericht verzonden!';
+      if (sending) return;
+      if (!contactForm.reportValidity()) return;
+
+      const data = Object.fromEntries(new FormData(contactForm).entries());
+      if (String(data._honey || '').trim() !== '') return;
+      delete data._honey;
+      if (data.email) data._replyto = data.email;
+
+      sending = true;
       btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
+      btn.textContent = 'Bezig met verzenden…';
+      setStatus('', '');
+
+      try {
+        const response = await fetch(ajaxEndpoint(contactForm.action), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        const contentType = response.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          throw new Error('Geen geldig antwoord van de formulierdienst.');
+        }
+        const payload = await response.json();
+        const delivered = response.ok && (payload.success === true || payload.success === 'true');
+        if (!delivered) {
+          throw new Error(payload && payload.message ? payload.message : 'Verzenden mislukt.');
+        }
         contactForm.reset();
-      }, 3000);
+        setStatus('Bericht verzonden! We nemen zo snel mogelijk contact met je op.', 'success');
+      } catch (err) {
+        setStatus('Het bericht kon niet worden verzonden. Probeer het opnieuw, of mail ons via alfadogsbmb@gmail.com.', 'error');
+      } finally {
+        sending = false;
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
     });
   }
 });
