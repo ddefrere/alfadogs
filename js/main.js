@@ -81,6 +81,37 @@ document.addEventListener('DOMContentLoaded', () => {
       status.classList.toggle('is-error', state === 'error');
     };
 
+    const flagAccepted = (value) => value === true || value === 'true';
+
+    // FormSubmit answers a delivered submission with HTTP 200 and a JSON body,
+    // but labels that body text/html. success is the string "true"; a refusal
+    // is also HTTP 200, with success "false".
+    const submissionDelivered = (response, text) => {
+      if (!response.ok) return false;
+      const trimmed = text.trim();
+      let payload = null;
+      if (trimmed.startsWith('{')) {
+        try {
+          payload = JSON.parse(trimmed);
+        } catch {
+          payload = null;
+        }
+      }
+      if (payload && typeof payload === 'object') {
+        if (Object.prototype.hasOwnProperty.call(payload, 'success')) {
+          return flagAccepted(payload.success);
+        }
+        if (Object.prototype.hasOwnProperty.call(payload, 'ok')) {
+          return flagAccepted(payload.ok);
+        }
+        return /submitted successfully/i.test(String(payload.message || ''));
+      }
+      if (/needs activation|unable to submit|something went wrong|not formatted correctly|form should post/i.test(trimmed)) {
+        return false;
+      }
+      return /thank you|submitted successfully/i.test(trimmed);
+    };
+
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (sending) return;
@@ -105,14 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify(data),
         });
-        const contentType = response.headers.get('content-type') || '';
-        if (!contentType.includes('application/json')) {
-          throw new Error('Geen geldig antwoord van de formulierdienst.');
-        }
-        const payload = await response.json();
-        const delivered = response.ok && (payload.success === true || payload.success === 'true');
-        if (!delivered) {
-          throw new Error(payload && payload.message ? payload.message : 'Verzenden mislukt.');
+        const body = await response.text();
+        if (!submissionDelivered(response, body)) {
+          throw new Error('Verzenden mislukt.');
         }
         contactForm.reset();
         setStatus('Bericht verzonden! We nemen zo snel mogelijk contact met je op.', 'success');
