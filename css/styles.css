@@ -536,6 +536,19 @@ ul {
   object-fit: cover;
 }
 
+/* Cutout sits on the section colour, with both subjects fully in frame. */
+.split-image.is-cutout {
+  aspect-ratio: auto;
+  background: transparent;
+  overflow: visible;
+}
+
+.split-image.is-cutout img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .split-content p {
   margin-bottom: 1.25rem;
   color: var(--color-text-muted);
