@@ -1282,6 +1282,10 @@ ul {
   margin-top: 1.5rem;
 }
 
+.cta-row.is-centered {
+  justify-content: center;
+}
+
 /* Unified article (no split cream/dark) */
 .article-unified {
   background: var(--color-cream);
