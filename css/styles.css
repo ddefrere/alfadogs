@@ -919,6 +919,14 @@ ul {
   box-shadow: 0 0 0 1px var(--color-accent);
 }
 
+.pricing-card.featured > .btn {
+  display: block;
+  width: fit-content;
+  margin-top: 1.75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .pricing-card {
 
   background: var(--color-white);
