@@ -927,6 +927,21 @@ ul {
   margin-right: auto;
 }
 
+.pricing-card .card-copy {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-top: 0.75rem;
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+  hyphenate-limit-chars: 7 3 3;
+}
+
+.pricing-card h3 + .card-copy {
+  margin-top: 1rem;
+}
+
 .pricing-card {
 
   background: var(--color-white);
