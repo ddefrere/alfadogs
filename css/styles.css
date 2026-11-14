@@ -970,6 +970,20 @@ ul {
 }
 
 /* Contact form */
+.contact-welcome {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(14rem, 0.72fr);
+  gap: 2rem 3rem;
+  align-items: center;
+}
+
+.contact-dog {
+  display: block;
+  width: min(100%, 16rem);
+  height: auto;
+  margin-inline: auto;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1408,10 +1422,15 @@ ul {
 
   .split,
   .contact-grid,
+  .contact-welcome,
   .footer-inner,
   .page-hero-kompas {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .contact-dog {
+    width: min(68%, 14rem);
   }
 
   .page-hero-kompas {
