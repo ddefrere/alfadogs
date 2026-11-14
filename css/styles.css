@@ -710,6 +710,17 @@ ul {
   color: var(--color-accent);
 }
 
+.section-band {
+  margin: 0;
+  line-height: 0;
+  background: var(--color-black);
+}
+
+.section-band img {
+  width: 100%;
+  height: auto;
+}
+
 /* Page hero (subpages) */
 .page-hero {
   position: relative;
