@@ -1282,8 +1282,16 @@ ul {
   margin-top: 1.5rem;
 }
 
-.cta-row.is-centered {
+.cta-row.is-centered,
+.section-inner > .cta-row {
   justify-content: center;
+}
+
+.section-inner > .btn {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Unified article (no split cream/dark) */
