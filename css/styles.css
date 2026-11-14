@@ -438,6 +438,20 @@ ul {
   margin: 0 auto;
 }
 
+.highlight-banner.banner-light {
+  background: var(--color-white);
+  color: var(--color-text);
+}
+
+.highlight-banner.banner-light h2 {
+  color: var(--color-black);
+}
+
+.highlight-banner.banner-light p {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
 /* Sections */
 .section {
   padding: clamp(4rem, 8vw, 7rem) 2rem;
@@ -509,7 +523,7 @@ ul {
 }
 
 #verhaal {
-  background: #000000;
+  background: var(--color-black);
 }
 
 #verhaal .split-image {
