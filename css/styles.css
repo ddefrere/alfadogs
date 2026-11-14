@@ -421,6 +421,32 @@ ul {
   text-align: center;
 }
 
+.quote-section.has-puppy {
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+  padding-top: clamp(5rem, 11vw, 9rem);
+  padding-bottom: clamp(13rem, 26vw, 18rem);
+}
+
+.quote-puppy {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(68vw, 16.5rem);
+  height: auto;
+  transform: translate(-50%, 36%);
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 14px 16px rgba(10, 10, 10, 0.22));
+}
+
+.quote-section.has-puppy + .highlight-banner {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(7rem, 13vw, 10rem);
+}
+
 .quote-mark {
   font-family: var(--font-serif);
   font-size: 4rem;
