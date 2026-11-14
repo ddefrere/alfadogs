@@ -599,6 +599,15 @@ ul {
   object-fit: contain;
 }
 
+.split.is-tall {
+  align-items: stretch;
+}
+
+.split.is-tall .split-image {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
 .split-content p {
   margin-bottom: 1.25rem;
   color: var(--color-text-muted);
@@ -1476,6 +1485,11 @@ ul {
   .page-hero-kompas {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .split.is-tall .split-image {
+    aspect-ratio: 9/16;
+    height: auto;
   }
 
   .contact-dog {
