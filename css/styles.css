@@ -1459,6 +1459,18 @@ ul {
     width: min(68%, 14rem);
   }
 
+  .quote-section.has-puppy {
+    padding-bottom: 15rem;
+  }
+
+  .quote-puppy {
+    width: min(58vw, 12.5rem);
+  }
+
+  .quote-section.has-puppy + .highlight-banner {
+    padding-top: 8rem;
+  }
+
   .page-hero-kompas {
     padding-top: 6.5rem;
   }
