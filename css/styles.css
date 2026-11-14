@@ -772,6 +772,51 @@ ul {
   background-position: center 62%;
 }
 
+/* Hondenkompas: portrait sits on the right, text stays in the open field. */
+.page-hero-kompas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+  align-items: end;
+  background: #f9f9f9;
+  min-height: 68vh;
+  padding: 7.5rem 0 0;
+}
+
+.page-hero-kompas .page-hero-content {
+  color: var(--color-black);
+  width: auto;
+  max-width: 40rem;
+  margin: 0;
+  padding: 1.5rem 2.5rem 3.5rem 3rem;
+}
+
+.page-hero-kompas .eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.page-hero-kompas .page-hero-content p:last-child {
+  color: var(--color-text-muted);
+  max-width: 26rem;
+  margin-top: 0.85rem;
+}
+
+.page-hero-kompas .page-hero-photo {
+  justify-self: end;
+  align-self: end;
+  width: auto;
+  height: min(68vh, 640px);
+  max-width: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  display: block;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%);
+  mask-image: linear-gradient(to right, transparent, #000 8%);
+}
+
 .page-hero-clear::after {
   content: "";
   position: absolute;
@@ -1327,9 +1372,24 @@ ul {
 
   .split,
   .contact-grid,
-  .footer-inner {
+  .footer-inner,
+  .page-hero-kompas {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .page-hero-kompas {
+    padding-top: 6.5rem;
+  }
+
+  .page-hero-kompas .page-hero-content {
+    padding: 0.5rem 1.25rem 0;
+  }
+
+  .page-hero-kompas .page-hero-photo {
+    height: auto;
+    width: min(100%, 420px);
+    margin-left: auto;
   }
 
   .split-reverse {
