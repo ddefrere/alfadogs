@@ -478,6 +478,10 @@ ul {
   background: var(--color-cream);
 }
 
+.section-gray {
+  background: #e0e0dd;
+}
+
 .section-white {
   background: var(--color-white);
 }
@@ -508,12 +512,8 @@ ul {
   background: #141414;
 }
 
-#verhaal {
-  background: #000000;
-}
-
 #verhaal .split-image {
-  background: #000000;
+  background: #e0e0dd;
 }
 
 .split-image img {
@@ -680,6 +680,20 @@ ul {
   margin: 0 auto 1rem;
   opacity: 0.8;
   font-size: 1.05rem;
+}
+
+.highlight-banner.banner-gray {
+  background: #e0e0dd;
+  color: var(--color-text);
+}
+
+.highlight-banner.banner-gray h2 {
+  color: var(--color-black);
+}
+
+.highlight-banner.banner-gray p {
+  color: var(--color-text-muted);
+  opacity: 1;
 }
 
 /* Quote block (rescued) */
