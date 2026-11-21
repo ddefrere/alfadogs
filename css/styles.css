@@ -443,6 +443,30 @@ ul {
   color: var(--color-black);
 }
 
+.quote-section.has-puppy {
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+  padding-bottom: clamp(11rem, 22vw, 15rem);
+}
+
+.quote-puppy {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(52vw, 14rem);
+  height: auto;
+  transform: translate(-50%, 40%);
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 12px 14px rgba(10, 10, 10, 0.16));
+}
+
+.quote-section.has-puppy + .section {
+  position: relative;
+  z-index: 1;
+}
+
 /* Sections */
 .section {
   padding: clamp(4rem, 8vw, 7rem) 2rem;
@@ -1293,6 +1317,14 @@ ul {
 
   .split-reverse {
     direction: ltr;
+  }
+
+  .quote-puppy {
+    width: min(58vw, 12rem);
+  }
+
+  .quote-section.has-puppy + .section {
+    padding-top: 7.5rem;
   }
 
   .footer-bottom {
