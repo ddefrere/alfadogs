@@ -541,8 +541,9 @@ ul {
   background: #141414;
 }
 
+#verhaal,
 #verhaal .split-image {
-  background: #e0e0dd;
+  background: #070707;
 }
 
 .split-image img {
