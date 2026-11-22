@@ -1353,14 +1353,14 @@ ul {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1.5rem;
-}
-
-.cta-row.is-centered,
-.section-inner > .cta-row {
   justify-content: center;
 }
 
-.section-inner > .btn {
+.split-content > .btn,
+.feature > .btn,
+.contact-form > .btn,
+.section-inner > .btn,
+.pricing-card > .btn {
   display: block;
   width: fit-content;
   margin-left: auto;
