@@ -4,7 +4,7 @@
 
 :root {
   --color-black: #0a0a0a;
-  --color-dark: #141414;
+  --color-dark: #2f2f2f;
   --color-cream: #f4efe8;
   --color-cream-dark: #e8e0d4;
   --color-white: #ffffff;
@@ -50,7 +50,7 @@ body.intro-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #141414;
+  background: var(--color-dark);
   transition: opacity 1s ease, transform 1s ease, visibility 0s linear 1s;
 }
 
@@ -356,7 +356,7 @@ ul {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-color: #141414;
+  background-color: var(--color-dark);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -443,20 +443,32 @@ ul {
   color: var(--color-black);
 }
 
+.quote-section.quote-cream {
+  background: var(--color-cream);
+  color: var(--color-black);
+}
+
 .quote-section.has-puppy {
   position: relative;
   z-index: 2;
   overflow: visible;
-  padding-bottom: clamp(11rem, 22vw, 15rem);
+  padding-bottom: calc(min(48vw, 12.5rem) + 3rem);
+}
+
+.quote-section.has-puppy .quote-mark,
+.quote-section.has-puppy .quote-text {
+  position: relative;
+  z-index: 2;
 }
 
 .quote-puppy {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: min(52vw, 14rem);
+  z-index: 1;
+  width: min(48vw, 12.5rem);
   height: auto;
-  transform: translate(-50%, 40%);
+  transform: translateX(-50%);
   pointer-events: none;
   user-select: none;
   filter: drop-shadow(0 12px 14px rgba(10, 10, 10, 0.16));
@@ -465,6 +477,7 @@ ul {
 .quote-section.has-puppy + .section {
   position: relative;
   z-index: 1;
+  padding-top: clamp(4rem, 8vw, 7rem);
 }
 
 /* Sections */
@@ -531,6 +544,11 @@ ul {
   background: var(--color-cream);
 }
 
+#intro {
+  background: var(--color-cream-dark);
+}
+
+
 .section-gray {
   background: #e0e0dd;
 }
@@ -562,7 +580,7 @@ ul {
 }
 
 .section-dark .split-image {
-  background: #141414;
+  background: var(--color-dark);
 }
 
 #verhaal,
@@ -586,6 +604,19 @@ ul {
   width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+.split-image.is-fade-top {
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 100%);
+}
+
+.split-image.is-fade-top img {
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .split.is-tall {
@@ -729,7 +760,7 @@ ul {
 
 /* Highlight banner */
 .highlight-banner {
-  background: var(--color-black);
+  background: var(--color-dark);
   color: var(--color-white);
   padding: clamp(3rem, 6vw, 5rem) 2rem;
   text-align: center;
@@ -773,7 +804,7 @@ ul {
 
 /* Quote block (rescued) */
 .statement-block {
-  background: var(--color-black);
+  background: var(--color-cream);
   padding: clamp(4rem, 8vw, 6rem) 2rem;
   text-align: center;
 }
@@ -783,7 +814,7 @@ ul {
   font-size: clamp(1.5rem, 3.5vw, 2.25rem);
   font-style: italic;
   line-height: 1.5;
-  color: var(--color-white);
+  color: var(--color-black);
   max-width: 700px;
   margin: 0 auto;
 }
@@ -856,6 +887,28 @@ ul {
   background-position: center 62%;
 }
 
+.page-hero-contact .page-hero-bg {
+  background-size: 145%;
+  background-position: 42% 48%;
+}
+
+.page-hero-jill {
+  min-height: 70vh;
+}
+
+.page-hero-jill .page-hero-bg {
+  background-size: cover;
+  /* Full original landscape: subjects sit lower center-right */
+  background-position: 58% 72%;
+}
+
+.page-hero-jill .page-hero-content {
+  max-width: 28rem;
+  margin-left: 0;
+  margin-right: auto;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+}
+
 .page-hero-clear::after {
   content: "";
   position: absolute;
@@ -872,21 +925,31 @@ ul {
   );
 }
 
+/* After .page-hero-clear::after so Jill overlay wins */
+.page-hero-clear.page-hero-jill::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.45) 0%,
+    rgba(10, 10, 10, 0.12) 18%,
+    rgba(10, 10, 10, 0.04) 42%,
+    rgba(10, 10, 10, 0.4) 78%,
+    rgba(10, 10, 10, 0.58) 100%
+  );
+}
+
 .page-hero-kompas {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
-  align-items: end;
+  display: block;
   background: #f9f9f9;
-  min-height: 68vh;
-  padding: 7.5rem 0 0;
+  min-height: 0;
+  padding: 7.5rem 2.5rem 2.75rem 3rem;
 }
 
 .page-hero-kompas .page-hero-content {
   color: var(--color-black);
   width: auto;
-  max-width: 40rem;
+  max-width: 58rem;
   margin: 0;
-  padding: 1.5rem 2.5rem 3.5rem 3rem;
+  padding: 0;
 }
 
 .page-hero-kompas .eyebrow {
@@ -897,23 +960,35 @@ ul {
   margin-bottom: 0.75rem;
 }
 
-.page-hero-kompas .page-hero-content p:last-child {
+.page-hero-kompas .page-hero-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.page-hero-kompas .page-hero-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.page-hero-kompas h1 {
+  margin: 0;
+}
+
+.page-hero-kompas .page-hero-copy p {
   color: var(--color-text-muted);
   max-width: 26rem;
   margin-top: 0.85rem;
 }
 
 .page-hero-kompas .page-hero-photo {
-  justify-self: end;
-  align-self: end;
-  width: auto;
-  height: min(68vh, 640px);
+  flex: 0 0 auto;
+  width: min(16.5rem, 32vw);
+  height: auto;
   max-width: 100%;
   object-fit: contain;
-  object-position: right bottom;
+  object-position: center;
   display: block;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%);
-  mask-image: linear-gradient(to right, transparent, #000 8%);
 }
 
 /* Pricing */
@@ -1038,9 +1113,10 @@ ul {
 
 .contact-dog {
   display: block;
-  width: min(100%, 16rem);
+  width: min(100%, 15rem);
   height: auto;
   margin-inline: auto;
+  object-fit: contain;
 }
 
 .contact-grid {
@@ -1482,8 +1558,7 @@ ul {
   .split,
   .contact-grid,
   .contact-welcome,
-  .footer-inner,
-  .page-hero-kompas {
+  .footer-inner {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -1501,26 +1576,45 @@ ul {
     width: min(68%, 14rem);
   }
 
+  .page-hero-jill {
+    min-height: 65vh;
+  }
+
+  .page-hero-jill .page-hero-bg {
+    background-position: 55% 70%;
+  }
+
+  .page-hero-jill .page-hero-content {
+    max-width: 16rem;
+  }
+
   .page-hero-kompas {
-    padding-top: 6.5rem;
+    padding: 6.5rem 1.25rem 2rem;
   }
 
   .page-hero-kompas .page-hero-content {
-    padding: 0.5rem 1.25rem 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  .page-hero-kompas .page-hero-heading {
+    gap: 1rem;
   }
 
   .page-hero-kompas .page-hero-photo {
-    height: auto;
-    width: min(100%, 420px);
-    margin-left: auto;
+    width: min(11.5rem, 38vw);
   }
 
   .quote-puppy {
-    width: min(58vw, 12rem);
+    width: min(52vw, 11rem);
+  }
+
+  .quote-section.has-puppy {
+    padding-bottom: calc(min(52vw, 11rem) + 2.5rem);
   }
 
   .quote-section.has-puppy + .section {
-    padding-top: 7.5rem;
+    padding-top: clamp(4rem, 8vw, 7rem);
   }
 
   .footer-bottom {
