@@ -773,7 +773,7 @@ ul {
 
 /* Quote block (rescued) */
 .statement-block {
-  background: var(--color-cream-dark);
+  background: var(--color-black);
   padding: clamp(4rem, 8vw, 6rem) 2rem;
   text-align: center;
 }
@@ -783,7 +783,7 @@ ul {
   font-size: clamp(1.5rem, 3.5vw, 2.25rem);
   font-style: italic;
   line-height: 1.5;
-  color: var(--color-black);
+  color: var(--color-white);
   max-width: 700px;
   margin: 0 auto;
 }
